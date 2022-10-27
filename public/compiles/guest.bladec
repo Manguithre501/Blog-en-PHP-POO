@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<head>
+ <title><?php echo \htmlentities(APP_NAME??'', ENT_QUOTES, 'UTF-8', false); ?></title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+ <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="<?php echo (isset($this->assetDict[('css/styles.css')]))?$this->assetDict[('css/styles.css')]:$this->baseUrl.'/'.('css/styles.css'); ?>">
+ <link rel="apple-touch-icon" sizes="180x180" href="<?php echo (isset($this->assetDict[('img/favicons/apple-touch-icon.png')]))?$this->assetDict[('img/favicons/apple-touch-icon.png')]:$this->baseUrl.'/'.('img/favicons/apple-touch-icon.png'); ?>">
+ <link rel="icon" type="image/png" sizes="32x32" href="<?php echo (isset($this->assetDict[('img/favicons/favicon-32x32.png')]))?$this->assetDict[('img/favicons/favicon-32x32.png')]:$this->baseUrl.'/'.('img/favicons/favicon-32x32.png'); ?>">
+ <link rel="icon" type="image/png" sizes="16x16" href="<?php echo (isset($this->assetDict[('img/favicons/favicon-16x16.png')]))?$this->assetDict[('img/favicons/favicon-16x16.png')]:$this->baseUrl.'/'.('img/favicons/favicon-16x16.png'); ?>">
+ <link rel="icon" type="image/png" sizes="16x16" href="<?php echo (isset($this->assetDict[('img/favicons/android-chrome-192x192.png')]))?$this->assetDict[('img/favicons/android-chrome-192x192.png')]:$this->baseUrl.'/'.('img/favicons/android-chrome-192x192.png'); ?>">
+ <link rel="icon" type="image/png" sizes="16x16" href="<?php echo (isset($this->assetDict[('img/favicons/android-chrome-512x512.png')]))?$this->assetDict[('img/favicons/android-chrome-512x512.png')]:$this->baseUrl.'/'.('img/favicons/android-chrome-512x512.png'); ?>">
+ <link rel="icon" type="image/png" href="<?php echo (isset($this->assetDict[('img/favicons/favicon-32x32.png')]))?$this->assetDict[('img/favicons/favicon-32x32.png')]:$this->baseUrl.'/'.('img/favicons/favicon-32x32.png'); ?>" sizes="32x32">
+ <link rel="icon" type="image/png" sizes="16x16" href="<?php echo (isset($this->assetDict[('img/favicons/favicon.ico')]))?$this->assetDict[('img/favicons/favicon.ico')]:$this->baseUrl.'/'.('img/favicons/favicon.ico'); ?>">
+
+ <link rel="stylesheet" href="<?php echo (isset($this->assetDict[('js/sweetalert2/dist/sweetalert2.css')]))?$this->assetDict[('js/sweetalert2/dist/sweetalert2.css')]:$this->baseUrl.'/'.('js/sweetalert2/dist/sweetalert2.css'); ?>">
+
+ <style>
+ .menu>ul>li.active>a {
+ color: #0D84FB;
+ }
+
+ .comment-item .reply-link:hover {
+ text-decoration: none;
+ }
+
+ .comment-item .reply-link a:hover {
+ text-decoration: underline;
+ }
+
+ button.btn.disabled {
+ background: #E1F0FF;
+ color: black;
+ opacity: 0.5;
+ }
+
+
+
+ .btn-logout {
+ background-color: transparent;
+ color: #fff;
+ outline: none;
+ padding-left: 16px;
+ line-height: 20px;
+ display: block;
+ }
+
+ .btn-logout:hover {
+ color: #0D84FB;
+ }
+
+ .select-file .file-label {
+ width: auto;
+ color: #fff;
+ display: block;
+ text-transform: capitalize;
+ font-size: 50px;
+ font-family: 'Roboto', sans-serif;
+ }
+ </style>
+</head>
+
+<body class="transition-none <?php echo \htmlentities(Routes\Router::getCurrentUrl() === 'single' ? 'no-padding' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+
+ <div class="search-section">
+ <div class="wrap">
+ <div class="wrap_float">
+ <div class="search-form">
+ <input type="text" class="search-input" placeholder="Search…">
+ <button class="search-submit"></button>
+ </div>
+ <div class="search-close" id="search-close"></div>
+ </div>
+ </div>
+ </div>
+
+ <div class="container page">
+ <div class="container-wrap">
+ <?php echo $this->runChild('Partials.header'); ?>
+
+ <div class="main-page-posts">
+
+ <?php echo $this->yieldContent('content'); ?>
+
+ </div>
+ <?php echo $this->runChild('Partials.footer'); ?>
+ </div>
+ </div>
+
+
+
+ <!-- JavaScripts
+	============================================= -->
+ <script src="<?php echo (isset($this->assetDict[('js/jquery.min.js')]))?$this->assetDict[('js/jquery.min.js')]:$this->baseUrl.'/'.('js/jquery.min.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/checkmode.js')]))?$this->assetDict[('js/checkmode.js')]:$this->baseUrl.'/'.('js/checkmode.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/slick.min.js')]))?$this->assetDict[('js/slick.min.js')]:$this->baseUrl.'/'.('js/slick.min.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/jquery.arcticmodal.min.js')]))?$this->assetDict[('js/jquery.arcticmodal.min.js')]:$this->baseUrl.'/'.('js/jquery.arcticmodal.min.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/lightgallery.js')]))?$this->assetDict[('js/lightgallery.js')]:$this->baseUrl.'/'.('js/lightgallery.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/jquery.mousewheel.min.js')]))?$this->assetDict[('js/jquery.mousewheel.min.js')]:$this->baseUrl.'/'.('js/jquery.mousewheel.min.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/device.min.js')]))?$this->assetDict[('js/device.min.js')]:$this->baseUrl.'/'.('js/device.min.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/jquery.placeholder.label.js')]))?$this->assetDict[('js/jquery.placeholder.label.js')]:$this->baseUrl.'/'.('js/jquery.placeholder.label.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/jquery-ui.min.js')]))?$this->assetDict[('js/jquery-ui.min.js')]:$this->baseUrl.'/'.('js/jquery-ui.min.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/scripts.js')]))?$this->assetDict[('js/scripts.js')]:$this->baseUrl.'/'.('js/scripts.js'); ?>"></script>
+
+ <script src="<?php echo (isset($this->assetDict[('js/axios/dist/axios.js')]))?$this->assetDict[('js/axios/dist/axios.js')]:$this->baseUrl.'/'.('js/axios/dist/axios.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/timeAgo/jquery.timeago.js')]))?$this->assetDict[('js/timeAgo/jquery.timeago.js')]:$this->baseUrl.'/'.('js/timeAgo/jquery.timeago.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/timeAgo/jquery.timeago.fr.js')]))?$this->assetDict[('js/timeAgo/jquery.timeago.fr.js')]:$this->baseUrl.'/'.('js/timeAgo/jquery.timeago.fr.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/sweetalert2/dist/sweetalert2.js')]))?$this->assetDict[('js/sweetalert2/dist/sweetalert2.js')]:$this->baseUrl.'/'.('js/sweetalert2/dist/sweetalert2.js'); ?>"></script>
+ <script src="<?php echo (isset($this->assetDict[('js/alert.js')]))?$this->assetDict[('js/alert.js')]:$this->baseUrl.'/'.('js/alert.js'); ?>"></script>
+
+
+ <?php if(isset($_SESSION['success'])): ?>
+ <script>
+ useSwallSuccess("<?php echo \htmlentities($_SESSION['success']??'', ENT_QUOTES, 'UTF-8', false); ?>")
+ </script>
+ <?php unset($_SESSION['success']) ?>
+ <?php endif; ?>
+
+
+ <?php echo $this->yieldPushContent('scripts'); ?>
+
+ <script>
+ $("time.timeago").timeago();
+ </script>
+</body>
+
+</html>
